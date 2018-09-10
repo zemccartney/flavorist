@@ -10,6 +10,12 @@ version=$2
 origin='origin'
 master='pal' # TODO Set default to master
 
+
+# TODO Note that resetting, detaching, adding, and committing
+# Is wanted only when not tagging on master / tagging separately???
+# Reset needed only if tag is in separate branch
+# 
+
 # See the changes as they appear on top of the main branch
 git reset $origin/$master
 

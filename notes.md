@@ -35,6 +35,7 @@ WHAT CODE YOU'RE PULLING IN AND EXPLAINING DIFFERENCES IF YOU SEE ANY...
 - [] Get basic shell script running — TAILORED TO OUR PROCESS ONLY
     - [] Can take input and store in variables
     - [] Variables work in string building
+    - [] Add linting
 - [] Read and write some more
 - [] Try to answer the questions below
 - [] Polish the script, make it better
