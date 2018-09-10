@@ -1,22 +1,29 @@
 {
   "name": "flavorist",
   "version": "0.0.1",
-  "description": "<!-- TODO not quite it--> Small helper for creating and publishing a new git tag",
-  "main": "index.js",
+  "description": "Small helper for creating and publishing a new git tag",
+  "main": "./lib/cli.js",
+  "bin": "./lib/cli.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "dependencies": {
+    "bossy": "4.x.x"
+  },
+  "keywords": [
+    "git",
+    "tag",
+    "versioning",
+    "flavor"
+  ],
+  "author": "Zack McCartney",
+  "license" : "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zemccartney/flavorist.git"
   },
-  "author": "",
-  "license": "ISC",
   "bugs": {
     "url": "https://github.com/zemccartney/flavorist/issues"
   },
   "homepage": "https://github.com/zemccartney/flavorist#readme",
-  "dependencies": {
-    "bossy": "^4.0.1"
-  }
 }

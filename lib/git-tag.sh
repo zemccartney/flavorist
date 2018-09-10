@@ -12,7 +12,6 @@ version=
 remote='origin'
 master='master'
 
-
 while [ "$1" != "" ]; do
     case $1 in
         -v | --version )   version=$2
@@ -44,7 +43,7 @@ tag_message="${tag_name/[-]/ }"
 #
 
 # See the changes as they appear on top of the main branch
-git reset $origin/$master
+git reset $remote/$master
 
 # Leave the current branch– at this point we dont need to update any branch
 git checkout --detach
@@ -66,11 +65,11 @@ git tag -a $tag_name -m "(flavor) $tag_message"
 git tag --force -a $name -m "(flavor) $tag_message"
 
 # Push versioned tag
-git push $origin $tag_name
+git push $remote $tag_name
 
 # Remove single tagged commit on the pal repo—we're about to replace it!
-git push --delete $origin $name
+git push --delete $remote $name
 
-git push $origin $name
+git push $remote $name
 
 exit 0;

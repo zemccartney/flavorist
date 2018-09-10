@@ -33,8 +33,8 @@ WHAT CODE YOU'RE PULLING IN AND EXPLAINING DIFFERENCES IF YOU SEE ANY...
     - accidentally did git reset WRONG ORIGIN BRANCH (origin/master, not origin/pal).
     What the fuck happened? How would you recover?
 - [] Get basic shell script running — TAILORED TO OUR PROCESS ONLY
-    - [] Can take input and store in variables
-    - [] Variables work in string building
+    - [x] Can take input and store in variables
+    - [x] Variables work in string building
     - [] Add linting
 - [] Read and write some more
 - [] Try to answer the questions below
