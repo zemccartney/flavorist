@@ -20,6 +20,7 @@ cherry-pick a flavor, as long as the current latest version of the flavor
 matches the one used before, we will receive the same code on top of our
 copy of the boilerplate repository
 
+NOOOO!!!!! BECAUSE YOU CAN MERGE A TAG!!!!
 
 VERSIONING ALLOWS IDENTIFYING THE EXTENSION YOU'RE USING, IDENTIFYING
 WHAT CODE YOU'RE PULLING IN AND EXPLAINING DIFFERENCES IF YOU SEE ANY...
@@ -32,22 +33,24 @@ WHAT CODE YOU'RE PULLING IN AND EXPLAINING DIFFERENCES IF YOU SEE ANY...
 - [x] Work through test manually, on a fork
     - accidentally did git reset WRONG ORIGIN BRANCH (origin/master, not origin/pal).
     What the fuck happened? How would you recover?
-- [] Get basic shell script running — TAILORED TO OUR PROCESS ONLY
+- [x] Get basic shell script running — TAILORED TO OUR PROCESS ONLY
     - [x] Can take input and store in variables
     - [x] Variables work in string building
-    - [] Add linting
+    - [x] Add linting
 - [] Read and write some more
+(experiment w/ tagging in history; creating, cherry-picking,)
 - [] Try to answer the questions below
 - [] Polish the script, make it better
     - [] error handling?
     - [] sensible defaults?
     - [] prompts?
     - [] logging?
-    - [] WRAP IN NODE, MAKE USABLE VIA NPX
-    - [] help option and page!! https://github.com/alanshaw/david/blob/master/bin/usage.txt
+    - [x] WRAP IN NODE, MAKE USABLE VIA NPX
+    - [x] help option and page!! https://github.com/alanshaw/david/blob/master/bin/usage.txt
     - [] write tests? overkill?
 - [] Polish the README
     - [] Ask Devin about publicizing and explaining flavoring?
+    - [] shellcheck for shell linting
 
 ## QUESTIONS
 
@@ -64,9 +67,19 @@ the master branch, not extend, but also modify / revert in some ways to earlier 
 We want to treat flavors as branches from the HEAD of master, with their tags representing
 standalone, public-facing interfaces for extending master (see above not about cherry-pick vs. merge)
 
+- [] Is tagging just a human-friendly SHA marker? `git checkout SHA` or `git cherry-pick SHA`
+is the same as `git checkout / cherry-pick tag` when tag applies to commit of SHA?
+
 - [] Why do we create flavors in commits separate from main history / flavor branch history?
 
+- [] How does git cherry-pick work?
+- [] Why do we cherry-pick when we can also merge?
+
+- [] What's a squashed commit?
+
 - [] What's a shebang? Why do I care?
+
+- [] Should I not set git-tag as an .sh file? (https://mywiki.wooledge.org/BashGuide/CommandsAndArguments#Scripts)
 
 - [] How generalizable is our process? What are common tagging processes? merge into master,
 then tag commit in master
@@ -80,6 +93,7 @@ What happens in this case? How does the tag display in repo history?
 - [] Fetch vs. pull?
 - [] What does detached HEAD mean?
 - [] From shellcheck.net (https://www.shellcheck.net/) : Double quote to prevent globbing and word splitting. What does this mean?
+
 
 ## RESOURCES
 
@@ -117,8 +131,8 @@ http://www.fks.com/default.html
 
 https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified
 
-
-
+https://github.com/koalaman/shellcheck/blob/master/README.md#user-content-gallery-of-bad-code
+https://www.shellcheck.net/
 
 ## hpal new vs. clone: boilerplate installation
 
