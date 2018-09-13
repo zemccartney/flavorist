@@ -79,6 +79,7 @@ What happens in this case? How does the tag display in repo history?
 
 - [] Fetch vs. pull?
 - [] What does detached HEAD mean?
+- [] From shellcheck.net (https://www.shellcheck.net/) : Double quote to prevent globbing and word splitting. What does this mean?
 
 ## RESOURCES
 

@@ -5,10 +5,15 @@
   "main": "./lib/cli.js",
   "bin": "./lib/cli.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "lint": "eslint ./lib"
   },
   "dependencies": {
     "bossy": "4.x.x"
+  },
+  "devDependencies": {
+    "eslint": "5.x.x",
+    "eslint-config-hapi": "12.x.x",
+    "eslint-plugin-hapi": "4.x.x"
   },
   "keywords": [
     "git",
@@ -17,7 +22,7 @@
     "flavor"
   ],
   "author": "Zack McCartney",
-  "license" : "MIT",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/zemccartney/flavorist.git"
