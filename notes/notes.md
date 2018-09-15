@@ -37,10 +37,11 @@ WHAT CODE YOU'RE PULLING IN AND EXPLAINING DIFFERENCES IF YOU SEE ANY...
     - [x] Can take input and store in variables
     - [x] Variables work in string building
     - [x] Add linting
-- [] Read and write some more
+- [x] Read and write some more
 (experiment w/ tagging in history; creating, cherry-picking,)
-- [] Try to answer the questions below
-- [] Polish the script, make it better
+- [x] Try to answer the questions below
+- [] Expand the README
+- [] Polish the script, make it better, make it match the README
     - [] error handling?
     - [] sensible defaults?
     - [] prompts?
@@ -48,6 +49,7 @@ WHAT CODE YOU'RE PULLING IN AND EXPLAINING DIFFERENCES IF YOU SEE ANY...
     - [x] WRAP IN NODE, MAKE USABLE VIA NPX
     - [x] help option and page!! https://github.com/alanshaw/david/blob/master/bin/usage.txt
     - [] write tests? overkill?
+    - [] CONTRIBUTING?
 - [] Polish the README
     - [] Ask Devin about publicizing and explaining flavoring?
     - [] shellcheck for shell linting
@@ -71,11 +73,57 @@ standalone, public-facing interfaces for extending master (see above not about c
 is the same as `git checkout / cherry-pick tag` when tag applies to commit of SHA?
 
 - [] Why do we create flavors in commits separate from main history / flavor branch history?
+Why do we detach?
 
-- [] How does git cherry-pick work?
-- [] Why do we cherry-pick when we can also merge?
+https://stackoverflow.com/questions/1241720/git-cherry-pick-vs-merge-workflow
+cherry-pick COPIES the given commit, detaching it from its history
+merging preserves the commit's history, pulling that into the current branch
 
+For our purposes, where we detach, merging the tag wouldn't pull in any history,
+as it's detached, so completely history-less (I believe?)
+
+If we were to commit and tag on the flavor branch....wouldn't cherry-pick still work?
+Theoretically? NO!!! Unless you committed the squashed commit on the branch, but..why?
+
+Tagging on a branch ADDS THAT TAG to the branch's history...bad thing?
+
+  commit 385affa6b853b8be155630755b6e21d7e1ecc56b (tag: v1.2.3, tag: swagger-v2.1.1, origin/pal, origin/HEAD, pal)
+
+ [] Merging would add swagger's history to your main branch's history, right?
+
+ Yup, merging adds 2 entries to your main branch's log
+ - merge entry, which duplicates the commit message of the commit merged in
+ - the commit merged in
+So cherry-picking keeps history clean, creates a new commit, tacks it onto HEAD
+
+
+But it's possible that a.) that commit in the branch's history goes away for some reason?
+The branch moves, gets renamed, etc., so the commit is gone, so the tag fails?
+Wouldn't git keep the tag around, though? So as long as you keep the tag, even if you
+delete the branch it's on, you could still access the changes?
+
+https://git-scm.com/book/en/v2/Distributed-Git-Maintaining-a-Project#_rebase_cherry_pick
+
+We detach to defensively protect against failures / changes in the flavor dev
+branch impacting client use? Make sure the public interface is totally separate
+from our development environment??? (TODO **ASK ABOUT THIS**)
+[x] NO!! Detaching squashes all changes together; cherry picking flavor head would bring the
+changes introduced in JUST THAT COMMIT, not the entire body of changes. TEST THIS!!
+    For example, cherry-picking the flavor branch results in the last change appearing
+    in the current branch. In the tested case, that meant server/plugins/swagger.js was created,
+    but it wasn't registered on the manifest or package.json i.e. none of its dependencies or wiring,
+    changes introduced in other commits and required for that script to work, so cherry-picking ended
+    up being useless
+
+- [x] How does git cherry-pick work?
+- [x] Why do we cherry-pick when we can also merge?
 - [] What's a squashed commit?
+    A single commit derived from multiple commits i.e. we squash the changes made across
+    all commits into a single one. In our cases, for the purposes of allowing users to cherry-pick
+    in the full branch history of our flavor without a.) cluttering their project's history
+    with our flavor branch's history (merge) b.) still applying the entire difference between
+    master and flavor
+
 
 - [] What's a shebang? Why do I care?
 
@@ -93,7 +141,11 @@ What happens in this case? How does the tag display in repo history?
 - [] Fetch vs. pull?
 - [] What does detached HEAD mean?
 - [] From shellcheck.net (https://www.shellcheck.net/) : Double quote to prevent globbing and word splitting. What does this mean?
-
+- [] git tag -s? cryptographically signing tags?
+- [] merge --no-ff? git log --graph is cool. What does fast-forwarding do? If merged is ancestor of current, we can move HEAD pointer on current to HEAD of merged and DO NOT NEED TO CREATE A
+MERGE COMMIT, NO NEED TO RECORD, JUST EXTEND history vs. if no-ff, create a merge-commit as HEAD
+of current, display in history all commits from merged and in graph display those commits as
+separate from current (preserves history / branched status) https://stackoverflow.com/questions/9069061/what-is-the-difference-between-git-merge-and-git-merge-no-ff
 
 ## RESOURCES
 
@@ -121,13 +173,14 @@ snapshot of the state of files at a given point in history (commit)
     THE STATE THAT GIT SHOULD BE IN FOR THIS TO WORK
 
 https://git-scm.com/docs/git-tag
-
 https://nvie.com/posts/a-successful-git-branching-model/
+  - really like the constant master and develop branches, keeping those separate, their
+  clear definitions.
+  - not sold on the release branching and tagging process, at least for us
 https://jeffkreeftmeijer.com/git-flow/
 https://softwareengineering.stackexchange.com/questions/165725/git-branching-and-tagging-best-practices
 https://stackoverflow.com/questions/10376206/what-is-the-preferred-bash-shebang
 http://www.fks.com/default.html
-
 
 https://git-scm.com/book/en/v2/Git-Tools-Reset-Demystified
 
