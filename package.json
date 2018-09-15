@@ -1,7 +1,7 @@
 {
   "name": "flavorist",
   "version": "0.0.1",
-  "description": "Small helper for creating and publishing a new git tag",
+  "description": "Small helper for creating and publishing a git tags",
   "main": "./lib/cli.js",
   "bin": "./lib/cli.js",
   "scripts": {

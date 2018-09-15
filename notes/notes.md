@@ -50,6 +50,8 @@ WHAT CODE YOU'RE PULLING IN AND EXPLAINING DIFFERENCES IF YOU SEE ANY...
     - [x] help option and page!! https://github.com/alanshaw/david/blob/master/bin/usage.txt
     - [] write tests? overkill?
     - [] CONTRIBUTING?
+    - [] Add ref name validation? place in the shell script?
+    - [] If -v given, but no version specified, parses package.json file and uses the version found there
 - [] Polish the README
     - [] Ask Devin about publicizing and explaining flavoring?
     - [] shellcheck for shell linting

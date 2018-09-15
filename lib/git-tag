@@ -7,8 +7,8 @@ name=$1
 shift
 
 version=
-remote='origin'
-master='master'
+remote=
+branch=
 
 while [ "$1" != "" ]; do
     case $1 in
@@ -18,7 +18,7 @@ while [ "$1" != "" ]; do
         -r | --remote )    remote=$2
                            ;;
 
-        -m | --master )    master=$2
+        -b | --branch )    branch=$2
                            ;;
     esac
     shift
@@ -41,7 +41,7 @@ tag_message="${tag_name/[-]/ }"
 #
 
 # See the changes as they appear on top of the main branch
-git reset "$remote/$master"
+git reset "$remote/$branch"
 
 # Leave the current branch– at this point we dont need to update any branch
 git checkout --detach
